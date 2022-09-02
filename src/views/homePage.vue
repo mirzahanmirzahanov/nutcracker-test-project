@@ -1,14 +1,14 @@
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+  <div class="home-page">
+		
+	</div>
 </template>
 
 
 <script>
 export default {
   components: {},
-  name: "",
+  name: "home-page",
   computed: {},
   props: {},
   data: () => ({}),
