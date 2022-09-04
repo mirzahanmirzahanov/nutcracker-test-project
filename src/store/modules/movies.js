@@ -14,9 +14,8 @@ export default {
 			const response = await axios.get(
 				'https://floating-sierra-20135.herokuapp.com/api/movies'
 			);
-
-			// const result = response.data
-			const result = response
+			
+			const result = response.data.data
 			commit('SET_MOVIES', result)
 		}
 	},
