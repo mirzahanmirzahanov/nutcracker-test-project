@@ -86,11 +86,6 @@ export default {
     min-height: 100%;
     margin: 0 24px 0 0;
     background-color: $lightGray;
-    // img{
-    //   min-width: 100%;
-    // height: 100%;
-    // object-fit: cover;
-    // }
   }
 
   &__info {

@@ -2,7 +2,10 @@
   <div class="movies-list">
     <div class="movies-list__header">
       <h2>Фильмы</h2>
-      <the-select />
+      <the-select
+        @sortByName="sortByName"
+        @sortByYear="sortByYear"
+      />
     </div>
     <hr />
     <movies-list-item
@@ -32,6 +35,16 @@ export default {
   },
   methods: {
     ...mapActions(["GET_MOVIES"]),
+    sortByName() {
+      this.MOVIES.sort((minTitle, maxTitle) => {
+        return minTitle.title.toLowerCase() > maxTitle.title.toLowerCase() 
+      })
+    },
+    sortByYear() {
+      this.MOVIES.sort((maxYear, minYear) => {
+        return maxYear.year - minYear.year 
+      })
+},
   },
 };
 </script>

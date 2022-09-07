@@ -46,7 +46,7 @@
           />
           <div class="duration__info">
             <p>
-              {{ movie.collapse.duration[0] }}
+              {{ this.duration }}
             </p>
             <img
               :src="require('@/assets/images/filmIcon.png')"
@@ -77,6 +77,7 @@ export default {
       `https://floating-sierra-20135.herokuapp.com/api/movie/${this.$route.params.id}`
     );
     this.movie = response.data.data;
+    this.duration = response.data.data.collapse.duration[0]
   },
   methods: {},
 };
@@ -112,11 +113,6 @@ export default {
       min-height: 100%;
       margin: 0 24px 0 0;
       background-color: $lightGray;
-      // img{
-      //   min-width: 100%;
-      // height: 100%;
-      // object-fit: cover;
-      // }
     }
 
     &__info {
