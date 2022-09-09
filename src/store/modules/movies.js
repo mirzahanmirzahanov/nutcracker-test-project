@@ -7,11 +7,15 @@ export default {
 	},
 	mutations: {
 		SET_MOVIES(state, result) {
-			state.movies = result,
+			state.movies = result
 			state.status = 'success'
 		},
 		ERROR_MOVIES(state) {
-				state.status = 'error'
+			state.status = 'error'
+		},        
+		CLEAN_MOVIES(state) {
+			state.status = 'loading',
+			state.movies = []
 		}
 	},
 	actions: {
@@ -25,7 +29,7 @@ export default {
 			} catch (error) {
 				commit('ERROR_MOVIES')
 			}
-		}
+		},
 	},
 	getters: {
 		MOVIES(state) {

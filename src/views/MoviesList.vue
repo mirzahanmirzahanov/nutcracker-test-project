@@ -18,7 +18,7 @@
 
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapMutations, mapGetters, mapActions } from "vuex";
 
 import TheSelect from "@/components/select/TheSelect.vue";
 import MoviesListItem from "@/components/movies/MoviesListItem.vue";
@@ -33,12 +33,16 @@ export default {
   props: {},
   data: () => ({}),
   mounted() {
-    setTimeout(() => {
-      this.GET_MOVIES();
-    }, 1500);
+    this.CLEAN_MOVIES()
+    if (!this.MOVIES.length) {
+      setTimeout(() => {
+        this.GET_MOVIES();
+      }, 1500);
+    }
   },
   methods: {
     ...mapActions(["GET_MOVIES"]),
+    ...mapMutations(["CLEAN_MOVIES"]),
     sortByName() {
       this.MOVIES.sort((minTitle, maxTitle) => {
         return minTitle.title.toLowerCase() > maxTitle.title.toLowerCase();
