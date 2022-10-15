@@ -74,8 +74,7 @@ import ThePreloader from "@/components/preloader/ThePreloader.vue";
 export default {
   components: { ThePreloader },
   name: "single-movie",
-  computed: {
-  },
+  computed: {},
   props: {},
   data: () => ({
     movie: {},
@@ -83,7 +82,7 @@ export default {
   }),
   async mounted() {
     setTimeout(() => {
-      this.getSingleMovie()
+      this.getSingleMovie();
     }, 1500);
   },
   methods: {
@@ -92,8 +91,12 @@ export default {
         const response = await axios.get(
           `https://floating-sierra-20135.herokuapp.com/api/movie/${this.$route.params.id}`
         );
-        this.movie = response.data.data
-        this.status = "success";
+        this.movie = response.data.data;
+        if (this.movie === null) {
+          this.status = "error";
+        } else {
+          this.status = "success";
+        }
       } catch (error) {
         this.status = "error";
       }
@@ -204,7 +207,7 @@ export default {
     margin: 24px 0 0 0;
     font-size: 20px;
     font-weight: 700;
-    color: #FFF;
+    color: #fff;
   }
 }
 </style>
